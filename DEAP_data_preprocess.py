@@ -1,4 +1,6 @@
-# -*- coding: utf-8 -*-
+# =============================================================================
+# .# -*- coding: utf-8 -*-
+# =============================================================================
 """
 Spyder Editor
 
@@ -91,6 +93,39 @@ for i in sXX:
 pickle.dump(all_df_RSP_x,open("./dump_file/all_df_RSP_x","wb"))
 ###############################################################################
 
+############################提取1路BVP信号#################################
+#read Respiration belt data
+for i in sXX:
+    locals()['%s_df_BVP_x'%i] = pd.DataFrame(locals()[i][b'data'][:][38][:])
+    temp_index = []
+    for j in range(0,40,1):
+        temp_index.append(i+'_'+str(j))
+    locals()['%s_df_BVP_x'%i].index = temp_index
+
+#concat all sXX_df_BVP_x in one df
+all_df_BVP_x = pd.DataFrame()
+for i in sXX:
+    all_df_BVP_x = pd.concat([all_df_BVP_x,locals()['%s_df_BVP_x'%i]],axis=0)
+
+pickle.dump(all_df_BVP_x,open("./dump_file/all_df_BVP_x","wb"))
+###############################################################################
+
+############################提取1路TMP信号#################################
+#read Respiration belt data
+for i in sXX:
+    locals()['%s_df_TMP_x'%i] = pd.DataFrame(locals()[i][b'data'][:][39][:])
+    temp_index = []
+    for j in range(0,40,1):
+        temp_index.append(i+'_'+str(j))
+    locals()['%s_df_TMP_x'%i].index = temp_index
+
+#concat all sXX_df_BVP_x in one df
+all_df_TMP_x = pd.DataFrame()
+for i in sXX:
+    all_df_TMP_x = pd.concat([all_df_TMP_x,locals()['%s_df_TMP_x'%i]],axis=0)
+
+pickle.dump(all_df_TMP_x,open("./dump_file/all_df_TMP_x","wb"))
+###############################################################################
 
 #################################画GSR信号的图##################################
 #read .dat files(32 total)
@@ -105,3 +140,40 @@ s01_df_y.columns=['valence','arousal','dominance','liking']
 plt.plot(s01_GSR_df_x.iloc[0,:])
 plt.ylabel('GSR value')
 plt.show()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

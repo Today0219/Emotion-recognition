@@ -16,7 +16,7 @@ y_arousal = pickle.load(open("./dump_file/y_arousal","rb"))
 #画图DPI设定
 DPI_SET = 100
 
-if False:
+if True:
     #########################愉悦度
     X = [1,2,3,4,5,6,7,8,9,10]
     Y_xgb = [1.675444,1.675363,1.680978,1.685009,1.691554,
@@ -145,10 +145,10 @@ if True:
     plt.show()
 
 #统计样本个数
-print("高愉悦度（5-9）个数：{}".format(len(x_high)))
-print("高愉悦度（1-5）个数：{}".format(len(x_low)))
+#print("高愉悦度（5-9）个数：{}".format(len(x_high)))
+#print("高愉悦度（1-5）个数：{}".format(len(x_low)))
 
-if False:
+if True:
     #画3D图像
     x = all_df_y['valence']
     y = all_df_y['arousal']
@@ -156,10 +156,10 @@ if False:
     fig = plt.figure(dpi = DPI_SET)
     ax = Axes3D(fig)
     ax.scatter(x, y, z,'r.')
-    ax.set_xlabel("愉悦度")
-    ax.set_ylabel("唤醒度")
-    ax.set_zlabel("支配度")
-    ax.set_title("样本愉悦度-唤醒度-支配度分布")
+    ax.set_xlabel("valence")
+    ax.set_ylabel("arousal")
+    ax.set_zlabel("doninance")
+    #ax.set_title("样本愉悦度-唤醒度-支配度分布")
     plt.show()
 
 if False:
